@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NKAFA</title>
+  <meta name="description" content="Sankofa 3000: experiencia afrofuturista — universos, guardianes, memoria y creación.">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050407;
+      --gold: #C89A3D;
+      --copper: #A66B3F;
+      --deep-red: #8B2E2E;
+      --emerald: #0E6B4C;
+      --ochre: #C07B2D;
+      --bronze: #7D5A3A;
+      --violet: #7A3FBF;
+      --magenta: #D45AA6;
+      --cacao: #3E2A22;
+      --olive: #6B7A3E;
+      --muted: #9CA3AF;
+      --accent: var(--gold);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: radial-gradient(circle at 10% 10%, rgba(28,20,30,0.7), rgba(5,4,7,1) 40%);
+      color: #F6F5F3;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed; top: 0; left: 0; right: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 28px;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.06));
+      z-index: 80;
+    }
+    
+    .brand { display: flex; align-items: center; gap: 12px; }
+    
+    .logo {
+      width: 50px; height: 50px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--copper));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: #120601; font-size: 18px;
+    }
+    
+    .title { font-weight: 700; font-size: 18px; }
+    .subtitle { font-size: 12px; color: var(--muted); }
+    
+    nav { display: flex; gap: 18px; align-items: center; }
+    nav a {
+      color: var(--muted); font-weight: 600;
+      padding: 8px 12px; border-radius: 10px;
+      text-decoration: none; transition: all 0.3s;
+      cursor: pointer;
+    }
+    nav a:hover { background: rgba(255,255,255,0.08); color: var(--accent); }
+
+    main { padding-top: 92px; }
+
+    /* HERO */
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1fr 520px;
+      gap: 40px;
+      align-items: center;
+      padding: 64px;
+    }
+    
+    .hero h1 { font-size: 48px; line-height: 1.02; margin: 0 0 12px; }
+    .hero .lead { color: var(--muted); font-size: 18px; margin: 12px 0; }
+    .hero .meta { font-size: 14px; color: var(--muted); margin: 8px 0 20px; }
+    
+    .cta { display: flex; gap: 12px; margin-top: 20px; }
+    .btn {
+      padding: 12px 18px;
+      background: var(--accent);
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      color: #120601;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+    }
+    .btn.secondary:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--accent);
+    }
+
+    .visual-card {
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      padding: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      height: 520px;
+    }
+
+    /* SECTION DIVIDER */
+    .section-divider {
+      position: relative;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 60px 0;
+      overflow: hidden;
+    }
+
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--copper), var(--gold), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    .section-divider::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(200, 154, 61, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    .divider-symbol {
+      position: relative;
+      z-index: 1;
+      font-size: 32px;
+      color: var(--gold);
+      text-shadow: 0 0 20px rgba(200, 154, 61, 0.6);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+
+    /* PROYECTO SECTION */
+    .project-section {
+      padding: 60px 64px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.03));
+    }
+
+    .project-section .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .project-section h2 {
+      font-size: 36px;
+      margin-bottom: 24px;
+      background: linear-gradient(90deg, var(--gold), var(--copper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .poetic {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 24px;
+      padding: 20px;
+      border-left: 3px solid var(--gold);
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+    }
+
+    .representation {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* UNIVERSOS */
+    .universes-section {
+      padding: 48px 64px;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-header h2 { font-size: 32px; margin-bottom: 8px; }
+    .section-header .meta { color: var(--muted); }
+    
+    .universes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    
+    .uni-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid rgba(255,255,255,0.06);
+      min-height: 220px;
+    }
+    
+    .uni-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+    
+    .pill {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    
+    .uni-card h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    
+    .uni-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    
+    .uni-copa { border-left: 6px solid var(--deep-red); }
+    .uni-ubuntu { border-left: 6px solid var(--emerald); }
+    .uni-nia { border-left: 6px solid var(--bronze); }
+    .uni-ori { border-left: 6px solid var(--violet); }
+    .uni-aye { border-left: 6px solid var(--cacao); }
+
+    /* GUARDIANES */
+    .guardians {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding: 48px 64px;
+      border-radius: 18px;
+      margin: 32px;
+    }
+    
+    .guards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    
+    .guard {
+      background: rgba(255,255,255,0.04);
+      padding: 16px;
+      border-radius: 16px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    
+    .guard:hover { transform: scale(1.05); }
+    
+    .guard model-viewer {
+      width: 100%;
+      height: 280px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+    
+    .guard h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    
+    .guard .mantra {
+      color: var(--muted);
+      font-size: 13px;
+      font-style: italic;
+      margin: 8px 0;
+      line-height: 1.4;
+    }
+    
+    .guard .meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    
+    .guard button {
+      margin-top: 12px;
+      padding: 10px 16px;
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      color: #120601;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .guard button:hover {
+      filter: brightness(1.2);
+      transform: translateY(-2px);
+    }
+
+    /* ABOUT / WHO AM I */
+    .about {
+      padding: 60px 64px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    .about h2 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    
+    .about p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    
+    .profile {
+      border-radius: 14px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    }
+    
+    .profile h3 {
+      margin-bottom: 12px;
+    }
+    
+    .profile p {
+      font-size: 14px;
+      margin: 8px 0;
+    }
+    
+    .profile a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .profile a:hover {
+      filter: brightness(1.3);
+    }
+
+    /* MODAL */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 28px;
+    }
+    
+    #modal-content {
+      background: linear-gradient(180deg, rgba(10,10,10,0.95), rgba(6,6,6,0.95));
+      color: #fff;
+      padding: 32px;
+      border-radius: 16px;
+      max-width: 800px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      border: 1px solid rgba(200, 154, 61, 0.3);
+    }
+    
+    #modal-content h2 {
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+    
+    #modal-content p {
+      line-height: 1.6;
+      margin: 12px 0;
+      color: var(--muted);
+    }
+    
+    #modal-content model-viewer {
+      height: 400px;
+      margin: 20px 0;
+      border-radius: 12px;
+    }
+    
+    .close {
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #fff;
+      transition: all 0.3s;
+    }
+    
+    .close:hover {
+      color: var(--accent);
+      transform: scale(1.1);
+    }
+
+    footer {
+      padding: 32px 64px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .hero { grid-template-columns: 1fr; }
+      .universes { grid-template-columns: repeat(2, 1fr); }
+      .about { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 768px) {
+      .hero { padding: 28px; }
+      .hero h1 { font-size: 32px; }
+      .visual-card { height: 360px; }
+      .universes { grid-template-columns: 1fr; }
+      .universes-section, .guardians, .about, .project-section { padding: 28px; }
+      footer { flex-direction: column; gap: 10px; text-align: center; }
+      nav { flex-wrap: wrap; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="logo">NKF</div>
+      <div>
+        <div class="title">NKAFA</div>
+        <div class="subtitle">Guardianes de la conexión y la raíz</div>
+      </div>
+    </div>
+    <nav>
+      <a onclick="scrollToSection('#inicio')">Inicio</a>
+      <a onclick="scrollToSection('#proyecto')">Proyecto</a>
+      <a onclick="scrollToSection('#universos')">Universos</a>
+      <a onclick="scrollToSection('#guardianes')">Guardianes</a>
+      <a onclick="scrollToSection('#quien')">Quién soy</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="copy">
+        <h1>NKAFA</h1>
+        <p class="lead">Nkafa está asociado con la memoria, la raíz y la conexión con los ancestros.</p>
+        <p class="meta">"Recordar lo que representamos" es una exploración de la conexión profunda entre la herencia afro y su proyección en los medios digitales, indagando cómo las personas afro imaginan y desean verse representadas en los entornos virtuales contemporáneos.</p>
+        <div class="cta">
+          <button class="btn" onclick="scrollTo('#universos')">Entrar al Multiverso</button>
+          <button class="btn secondary" onclick="scrollTo('#guardianes')">Conoce a los Guardianes</button>
+        </div>
+      </div>
+      <div class="visual-card" style="display:flex;justify-content:center;align-items:center;flex-direction:column;">
+        <div style="
+            width:350px;
+            height:350px;
+            background:#111;
+            border:3px solid #b7893d;
+            border-radius:16px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            box-shadow:0 0 25px rgba(183,137,61,0.5);
+            animation:spin 25s linear infinite;">
+          <img 
+            src="https://www.adinkrasymbols.org/adinkra/duafe-medium.png" 
+            alt="Símbolo Adinkra Duafe"
+            style="width:80%;filter:drop-shadow(0 0 20px #b7893d);">
+        </div>
+        <p style="
+            margin-top:1rem;
+            color:#f5f0e1;
+            text-align:center;
+            font-family:'Inter', sans-serif;
+            font-weight:600;
+            letter-spacing:0.5px;">
+          Símbolo Adinkra <strong>Duafe</strong> — Representa belleza, pureza y cuidado espiritual.
+        </p>
+      </div>
+    </section>
+
+    <!-- DIVIDER 1 -->
+    <div class="section-divider">
+      <div class="divider-symbol">✦</div>
+    </div>
+
+    <!-- PROYECTO -->
+    <section id="proyecto" class="project-section">
+      <div class="section-header">
+        <h2>El Proyecto</h2>
+        <p class="poetic">
+          Este no es un portal de ficción.<br>
+          Es una memoria digital viva.<br>
+          Cada universo vibra con la voz de los ancestros,<br>
+          y cada visitante se convierte en guardián de la raíz.
+        </p>
+        <p class="representation">
+          Este proyecto nace para dar representación a las personas afro en espacios contemporáneos,
+          resaltando su historia, cultura y presencia en el mundo digital.
+        </p>
+      </div>
+    </section>
+
+    <!-- DIVIDER 2 -->
+    <div class="section-divider">
+      <div class="divider-symbol">◈</div>
+    </div>
+
+    <!-- UNIVERSOS -->
+    <section id="universos" class="universes-section">
+      <div class="section-header">
+        <h2>Universos de NKAFA</h2>
+        <p class="meta">Cada universo tiene su energía, color y misión. Haz clic en un universo para profundizar.</p>
+      </div>
+      <div class="universes" id="universesContainer"></div>
+    </section>
+
+    <!-- DIVIDER 3 -->
+    <div class="section-divider">
+      <div class="divider-symbol">✧</div>
+    </div>
+
+    <!-- GUARDIANES -->
+    <section id="guardianes" class="guardians">
+      <div class="section-header">
+        <h2>Los Guardianes de la Raíz</h2>
+        <p class="meta">Interactúa con cada guardián 3D para conocer su historia en el universo y en la vida real.</p>
+      </div>
+      <div class="guards-grid" id="guardiansContainer"></div>
+    </section>
+
+    <!-- DIVIDER 4 -->
+    <div class="section-divider">
+      <div class="divider-symbol">❖</div>
+    </div>
+
+    <!-- QUIÉN SOY -->
+    <section id="quien" class="about">
+      <div class="bio">
+        <h2>Quién soy</h2>
+        <p>Soy la creadora del portal Nkafa — una artista-investigadora que trabaja en la intersección entre arte, memoria y tecnología. Mi propósito es reconstruir narrativas afro y crear espacios donde la comunidad se reconozca y lidere su propio futuro.</p>
+        <p class="meta">Si deseas colaborar, compartir historias o ser parte del archivo vivo, contáctame.</p>
+      </div>
+      <aside class="profile">
+        <h3>Contacto</h3>
+        <p class="meta">Correo: <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a></p>
+        <p class="meta">Redes: <a href="https://instagram.com" target="_blank">@tucuenta</a></p>
+        <p class="meta">Ubicación: Colombia</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2025 Sankofa 3000 — Guardianes de la Raíz</div>
+    <div class="meta">Inspirado en afrofuturismo, Sankofa, Ubuntu y Kuumba</div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="modal">
+    <div id="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modal-title"></h2>
+      <model-viewer id="modal-model" src="" auto-rotate camera-controls shadow-intensity="1"></model-viewer>
+      <p id="modal-description"></p>
+      <button class="btn" onclick="closeModal()" style="margin-top: 20px;">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    // Datos de Universos
+    const universos = [
+      {
+        titulo: "sankofa 3000",
+        desc: "Reconstruir historias y sembrar nuevas narrativas.",
+        detalle: "En el año 3000 las voces ancestrales renacieron en códigos cuánticos. Aquí AntiRra y Aris reescriben la historia desde la dignidad: reparan, crean y enseñan.",
+        elemento: "Fuego de la verdad",
+        personajes: "AntiRra, Aris",
+        model: "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+        clase: "uni-copa",
+        pill: "linear-gradient(90deg, var(--deep-red), var(--gold))"
+      },
+      {
+        titulo: "UBUNTU NETWORK",
+        desc: "Lideresas afro — redes tejidas por conciencia.",
+        detalle: "Una red sin jerarquías: las decisiones se toman en círculos y la sabiduría fluye como raíces luminosas. Laura (Orí N'Zinga) y Kumbuka lideran el empoderamiento colectivo.",
+        elemento: "Tierra, fuego y agua",
+        personajes: "Orí N'Zinga, Kumbuka",
+        model: "https://modelviewer.dev/shared-assets/models/Chair.glb",
+        clase: "uni-ubuntu",
+        pill: "linear-gradient(90deg, var(--emerald), var(--ochre))"
+      },
+      {
+        titulo: "NIA QUANTUM",
+        desc: "Tierra, conocimiento, ritmo y propósito.",
+        detalle: "La música ancestral se convierte en tecnología viva y acto de resistencia. Nia, Peter y Marvin transmiten información y energía a través del beat.",
+        elemento: "Sonido y vibración",
+        personajes: "Nia Quantum, Peter, Marvin",
+        model: "https://modelviewer.dev/shared-assets/models/RobotExpressive.glb",
+        clase: "uni-nia",
+        pill: "linear-gradient(90deg, var(--bronze), var(--emerald))"
+      },
+      {
+        titulo: "ORI",
+        desc: "El poder no se impone: se irradia.",
+        detalle: "El arte visual y la moda recuperan la estética ancestral para transformar paradigmas sociales. Ori, Prais y Z$ller son los diseñadores del alma.",
+        elemento: "Luz, color y tejido",
+        personajes: "Ori, Prais, Z$ller",
+        model: "https://modelviewer.dev/shared-assets/models/Car.glb",
+        clase: "uni-ori",
+        pill: "linear-gradient(90deg, var(--violet), var(--magenta))"
+      },
+      {
+        titulo: "AYÉ",
+        desc: "Conectar con lo ancestral a través del cabello.",
+        detalle: "El cabello afro es código, mapa y territorio. Ayé, Flako y Zilene enseñan, educan y lideran a través del trenzado y la estética capilar.",
+        elemento: "Raíz y memoria",
+        personajes: "Ayé, Flako, Zilene",
+        model: "https://modelviewer.dev/shared-assets/models/Horse.glb",
+        clase: "uni-aye",
+        pill: "linear-gradient(90deg, var(--cacao), var(--olive))"
+      },
+      {
+        titulo: "MULTIVERSO",
+        desc: "Explora la red completa.",
+        detalle: "Conexión entre todos los universos: música, memoria, moda, liderazgo y tecnología. Un viaje inmersivo donde cada visitante puede ser guardián de la raíz.",
+        elemento: "Todos los elementos",
+        personajes: "Todos los guardianes",
+        model: "https://modelviewer.dev/shared-assets/models/Flamingo.glb",
+        clase: "",
+        pill: "linear-gradient(90deg, var(--gold), var(--violet))"
+      }
+    ];
+
+    // Datos de Guardianes
+    const guardianes = [
+      {
+        nombre: "AntiRra (Jair)",
+        universo: "COPA 3000",
+        frase: "Transformo la herida en saber, el trauma en fuego, y la verdad en libertad.",
+        rol: "Cronista cuántico",
+        elemento: "Fuego",
+        model: "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
+        objeto3d: "Figura Humana"
+      },
+      {
+        nombre: "Aris",
+        universo: "COPA 3000",
+        frase: "Nuestra historia no comienza en la esclavitud; somos herederos de dioses.",
+        rol: "Sembradora de conciencia",
+        elemento: "Aire",
+        model: "https://modelviewer.dev/shared-assets/models/Horse.glb",
+        objeto3d: "Caballo"
+      },
+     {
+        nombre: "AntiRra ",
+        universo: "COPA 3000",
+        frase: "Transformo la herida en saber, el trauma en fuego, y la verdad en libertad.",
+        rol: "Cronista cuántico",
+        elemento: "Fuego",
+        model: "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
+        objeto3d: "Figura Humana"
+      },
+      {
+        nombre: "Kumbuka ",
+        universo: "UBUNTU NETWORK",
+        frase: "Recordar es un acto revolucionario.",
+        rol: "Guardiana digital",
+        elemento: "Agua & Datos",
+        model: "https://modelviewer.dev/shared-assets/models/Chair.glb",
+        objeto3d: "Silla"
+      },
+      {
+        nombre: "Nia Quantum",
+        universo: "NIA QUANTUM",
+        frase: "Cuando toco el tambor, despierto a mis ancestros.",
+        rol: "Guardiana del ritmo",
+        elemento: "Sonido",
+        model: "https://modelviewer.dev/shared-assets/models/RobotExpressive.glb",
+        objeto3d: "Robot Expresivo"
+      },
+      {
+        nombre: "Peter (Ubuntu Beat)",
+        universo: "NIA QUANTUM",
+        frase: "El pulso de la comunidad nos mantiene en pie.",
+        rol: "Ritmo comunitario",
+        elemento: "Sonido",
+        model: "https://modelviewer.dev/shared-assets/models/Flamingo.glb",
+        objeto3d: "Flamenco"
+      },
+      {
+        nombre: "Marvin (Kuumba)",
+        universo: "NIA QUANTUM",
+        frase: "Crear es sanar y transformar.",
+        rol: "Creatividad infinita",
+        elemento: "Sonido",
+        model: "https://modelviewer.dev/shared-assets/models/Car.glb",
+        objeto3d: "Auto"
+      },
+      {
+        nombre: "Prais (Nzuri Kanda)",
+        universo: "ORI",
+        frase: "Vestirse es ritual. El cuerpo es lienzo.",
+        rol: "Diseñador del alma",
+        elemento: "Luz & Color",
+        model: "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+        objeto3d: "Astronauta"
+      },
+      {
+        nombre: "Flako",
+        universo: "AYÉ",
+        frase: "Mis beats son archivos. Cada golpe de tambor es un dato ancestral.",
+        rol: "Cronista sonoro",
+        elemento: "Raíz",
+        model: "https://modelviewer.dev/shared-assets/models/Horse.glb",
+        objeto3d: "Caballo"
+      }
+    ];
+
+    // Renderizar Universos
+    const uContainer = document.getElementById("universesContainer");
+    universos.forEach(u => {
+      const card = document.createElement("div");
+      card.className = `uni-card ${u.clase}`;
+      card.innerHTML = `
+        <div class="pill" style="background: ${u.pill}">${u.titulo}</div>
+        <h3>${u.desc}</h3>
+        <p class="meta">Elemento: ${u.elemento} — Personajes: ${u.personajes}</p>
+        <p>${u.detalle}</p>
+      `;
+      card.onclick = () => openModal(u.titulo, u.model, u.detalle);
+      uContainer.appendChild(card);
+    });
+
+    // Renderizar Guardianes
+    const gContainer = document.getElementById("guardiansContainer");
+    guardianes.forEach(g => {
+      const card = document.createElement("div");
+      card.className = "guard";
+      card.innerHTML = `
+        <model-viewer src="${g.model}" auto-rotate camera-controls></model-viewer>
+        <h3>${g.nombre}</h3>
+        <div class="mantra">"${g.frase}"</div>
+        <p class="meta">${g.rol} — Universo: ${g.universo} — Elemento: ${g.elemento}</p>
+        <button onclick="openModal('${g.nombre}', '${g.model}', '${g.frase}')">Ver historia</button>
+      `;
+      gContainer.appendChild(card);
+    });
+
+    // Modal Functions
+    function openModal(titulo, model, desc) {
+      document.getElementById("modal-title").innerText = titulo;
+      document.getElementById("modal-description").innerText = desc;
+      document.getElementById("modal-model").setAttribute("src", model);
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    // Scroll Function
+    function scrollTo(selector) {
+      const element = document.querySelector(selector);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Close modal clicking outside
+    document.getElementById('modal').addEventListener('click', (e) => {
+      if (e.target.id === 'modal') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

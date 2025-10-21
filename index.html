@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NKAFA</title>
+  <meta name="description" content="Sankofa 3000: universos afrofuturistas que conectan narrativa poética con historias reales y activismo.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050407;
+      --gold: #C89A3D;
+      --copper: #A66B3F;
+      --deep-red: #8B2E2E;
+      --emerald: #0E6B4C;
+      --ochre: #C07B2D;
+      --bronze: #7D5A3A;
+      --violet: #7A3FBF;
+      --magenta: #D45AA6;
+      --cacao: #3E2A22;
+      --olive: #6B7A3E;
+      --muted: #9CA3AF;
+      --card: rgba(255,255,255,0.04);
+    }
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    body {
+      background: radial-gradient(circle at 10% 10%, rgba(28,20,30,0.7), rgba(5,4,7,1) 40%);
+      color: #F6F5F3;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      padding: 12px 20px;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+      z-index: 90;
+      min-height: 72px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+    }
+    
+    .logo {
+      width: 48px; 
+      height: 48px; 
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--copper));
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      font-weight: 800; 
+      color: #120601; 
+      font-size: 16px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(200, 154, 61, 0.3);
+    }
+    
+    .brand-text .title { 
+      font-weight: 700; 
+      font-size: 16px; 
+      color: var(--gold);
+    }
+    
+    .brand-text .subtitle { 
+      font-size: 11px; 
+      color: var(--muted);
+      display: none;
+    }
+    
+    nav { 
+      display: flex; 
+      gap: 12px; 
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    nav a {
+      color: var(--muted); 
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+    
+    nav a:hover { 
+      color: var(--gold);
+      background: rgba(200, 154, 61, 0.1);
+    }
+
+    main { 
+      padding-top: 90px; 
+      padding-bottom: 60px;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 80vh;
+      text-align: center;
+    }
+    
+    .hero h1 { 
+      font-size: 32px; 
+      line-height: 1.2; 
+      margin: 0 0 12px;
+      background: linear-gradient(135deg, var(--gold), var(--copper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero .lead { 
+      color: #E5E5E5; 
+      font-size: 16px; 
+      margin: 12px 0; 
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    
+    .hero .meta { 
+      font-size: 14px; 
+      color: var(--muted); 
+      margin: 12px 0 20px;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+    
+    .cta { 
+      display: flex; 
+      gap: 12px; 
+      margin-top: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .btn {
+      padding: 12px 20px;
+      background: var(--gold);
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      color: #120601;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(200, 154, 61, 0.3);
+    }
+    
+    .btn:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(200, 154, 61, 0.5);
+    }
+    
+    .btn.secondary {
+      background: transparent;
+      border: 2px solid rgba(200, 154, 61, 0.5);
+      color: var(--gold);
+      box-shadow: none;
+    }
+    
+    .btn.secondary:hover {
+      background: rgba(200, 154, 61, 0.1);
+      border-color: var(--gold);
+    }
+
+    .visual-card {
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      padding: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border: 1px solid rgba(200, 154, 61, 0.2);
+    }
+
+    .adinkra-container {
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, rgba(17,17,17,0.8), rgba(0,0,0,0.9));
+      border: 3px solid var(--gold);
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 30px rgba(200, 154, 61, 0.4), inset 0 0 20px rgba(0,0,0,0.5);
+      animation: spin 25s linear infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .adinkra-container::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: conic-gradient(from 0deg, transparent, rgba(200, 154, 61, 0.2), transparent);
+      animation: rotate 4s linear infinite;
+    }
+
+    .adinkra-container img {
+      width: 70%;
+      filter: drop-shadow(0 0 20px var(--gold)) brightness(1.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes spin {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* SECTION DIVIDER */
+    .section-divider {
+      position: relative;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 40px 0;
+      overflow: hidden;
+    }
+
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--copper), var(--gold), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    .section-divider::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px;
+      height: 70px;
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(200, 154, 61, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    .divider-symbol {
+      position: relative;
+      z-index: 1;
+      font-size: 28px;
+      color: var(--gold);
+      text-shadow: 0 0 20px rgba(200, 154, 61, 0.6);
+      animation: rotateSymbol 20s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    }
+
+    @keyframes rotateSymbol {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* PROYECTO SECTION */
+    .project-section {
+      padding: 40px 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.03));
+    }
+
+    .project-section .section-header {
+      text-align: center;
+      margin-bottom: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .project-section h2 {
+      font-size: 28px;
+      margin-bottom: 24px;
+      background: linear-gradient(90deg, var(--gold), var(--copper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .poetic {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #D1D5DB;
+      font-style: italic;
+      margin-bottom: 24px;
+      padding: 20px;
+      border-left: 4px solid var(--gold);
+      background: linear-gradient(90deg, rgba(200, 154, 61, 0.1), transparent);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .representation {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* UNIVERSOS - CON IMÁGENES */
+    .universes-section {
+      padding: 40px 20px;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 0 20px;
+    }
+    
+    .section-header h2 { 
+      font-size: 26px; 
+      margin-bottom: 16px;
+      background: linear-gradient(90deg, var(--gold), var(--copper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .section-header .meta { 
+      color: var(--muted); 
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .universes {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 30px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .uni-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border-radius: 16px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      border: 1px solid rgba(255,255,255,0.06);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .uni-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200, 154, 61, 0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    
+    .uni-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(200, 154, 61, 0.3);
+      border-color: rgba(200, 154, 61, 0.3);
+    }
+
+    .uni-card:hover::before {
+      opacity: 1;
+    }
+    
+    /* Contenedor de imagen del universo */
+    .uni-img-container {
+      width: 100%;
+      height: 120px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+      border: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: universeFloat 10s ease-in-out infinite, universeGlow 5s ease-in-out infinite alternate;
+      box-shadow: 0 0 15px rgba(200, 154, 61, 0.3), 0 0 30px rgba(200, 154, 61, 0.1);
+    }
+    
+    .uni-img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      border-radius: 6px;
+      position: relative;
+      z-index: 2;
+      animation: universeRotate 20s linear infinite, universeTransform 8s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px rgba(200, 154, 61, 0.5)) brightness(1.1);
+    }
+    
+    /* Aura dorada alrededor de la imagen del universo */
+    .uni-img-container::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      background: radial-gradient(circle, rgba(200, 154, 61, 0.2) 0%, transparent 70%);
+      border-radius: 14px;
+      z-index: 1;
+      animation: universeAuraPulse 4s ease-in-out infinite;
+    }
+    
+    .uni-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(200, 154, 61, 0.2), rgba(166, 107, 63, 0.1));
+      margin-bottom: 14px;
+      flex-shrink: 0;
+      border: 1px solid rgba(200, 154, 61, 0.3);
+    }
+
+    .uni-icon img {
+      width: 36px;
+      opacity: 0.95;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    .uni-title {
+      font-weight: 800;
+      color: var(--gold);
+      font-size: 17px;
+      margin-bottom: 10px;
+      line-height: 1.3;
+      position: relative;
+    }
+    
+    .uni-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    
+    .uni-meta {
+      font-size: 12px;
+      color: #6B7280;
+      margin-top: auto;
+      font-style: italic;
+    }
+
+    /* Animaciones para los universos */
+    @keyframes universeFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      25% {
+        transform: translateY(-3px);
+      }
+      50% {
+        transform: translateY(0);
+      }
+      75% {
+        transform: translateY(3px);
+      }
+    }
+    
+    @keyframes universeGlow {
+      0% {
+        box-shadow: 0 0 15px rgba(200, 154, 61, 0.3), 0 0 30px rgba(200, 154, 61, 0.1);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(200, 154, 61, 0.4), 0 0 40px rgba(200, 154, 61, 0.2);
+      }
+    }
+    
+    @keyframes universeRotate {
+      0% {
+        transform: rotateY(0deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+    
+    @keyframes universeTransform {
+      0%, 100% {
+        transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 10px rgba(200, 154, 61, 0.5)) brightness(1.1);
+      }
+      25% {
+        transform: scale(1.03) rotate(1deg);
+        filter: drop-shadow(0 0 15px rgba(200, 154, 61, 0.6)) brightness(1.15);
+      }
+      50% {
+        transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 10px rgba(200, 154, 61, 0.5)) brightness(1.1);
+      }
+      75% {
+        transform: scale(1.03) rotate(-1deg);
+        filter: drop-shadow(0 0 15px rgba(200, 154, 61, 0.6)) brightness(1.15);
+      }
+    }
+    
+    @keyframes universeAuraPulse {
+      0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.6;
+        transform: scale(1.03);
+      }
+    }
+
+    /* GUARDIANES - ESTILOS MEJORADOS CON IMÁGENES 2D */
+    .guardians {
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      padding: 40px 20px;
+      border-radius: 18px;
+      margin: 20px;
+    }
+    
+    .guards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 30px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .guard {
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.35s ease;
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .guard::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(200, 154, 61, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 0;
+    }
+    
+    .guard:hover { 
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+      border-color: rgba(200, 154, 61, 0.3);
+    }
+    
+    .guard:hover::before {
+      opacity: 1;
+    }
+    
+    /* Contenedor de imagen del guardián con efectos */
+    .guard-img-container {
+      width: 100%;
+      height: 250px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+      border: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Aplicar efectos de aura y movimiento */
+      animation: guardianFloat 8s ease-in-out infinite, guardianGlow 4s ease-in-out infinite alternate;
+      box-shadow: 0 0 20px rgba(200, 154, 61, 0.4), 0 0 40px rgba(200, 154, 61, 0.2);
+    }
+    
+    .guard-img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      border-radius: 8px;
+      position: relative;
+      z-index: 2;
+      /* Efecto de rotación y transformación */
+      animation: guardianRotate 15s linear infinite, guardianTransform 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(200, 154, 61, 0.6)) brightness(1.1);
+    }
+    
+    /* Aura dorada alrededor de la imagen */
+    .guard-img-container::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: radial-gradient(circle, rgba(200, 154, 61, 0.3) 0%, transparent 70%);
+      border-radius: 16px;
+      z-index: 1;
+      animation: auraPulse 3s ease-in-out infinite;
+    }
+    
+    /* Animaciones para los guardianes */
+    @keyframes guardianFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      25% {
+        transform: translateY(-5px);
+      }
+      50% {
+        transform: translateY(0);
+      }
+      75% {
+        transform: translateY(5px);
+      }
+    }
+    
+    @keyframes guardianGlow {
+      0% {
+        box-shadow: 0 0 20px rgba(200, 154, 61, 0.4), 0 0 40px rgba(200, 154, 61, 0.2);
+      }
+      100% {
+        box-shadow: 0 0 30px rgba(200, 154, 61, 0.6), 0 0 60px rgba(200, 154, 61, 0.3);
+      }
+    }
+    
+    @keyframes guardianRotate {
+      0% {
+        transform: rotateY(0deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+    
+    @keyframes guardianTransform {
+      0%, 100% {
+        transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 15px rgba(200, 154, 61, 0.6)) brightness(1.1);
+      }
+      25% {
+        transform: scale(1.05) rotate(2deg);
+        filter: drop-shadow(0 0 20px rgba(200, 154, 61, 0.8)) brightness(1.2);
+      }
+      50% {
+        transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 15px rgba(200, 154, 61, 0.6)) brightness(1.1);
+      }
+      75% {
+        transform: scale(1.05) rotate(-2deg);
+        filter: drop-shadow(0 0 20px rgba(200, 154, 61, 0.8)) brightness(1.2);
+      }
+    }
+    
+    @keyframes auraPulse {
+      0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+      }
+    }
+    
+    .guard h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--gold);
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .guard .mantra {
+      color: #D1D5DB;
+      font-size: 13px;
+      font-style: italic;
+      margin: 10px 0;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .guard .guard-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .guard-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .guard button {
+      padding: 10px 18px;
+      background: var(--gold);
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      color: #120601;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(200, 154, 61, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .guard button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(200, 154, 61, 0.4);
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      background: transparent;
+      border: 2px solid rgba(200, 154, 61, 0.5);
+      border-radius: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .social-link:hover {
+      background: rgba(200, 154, 61, 0.1);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .about h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, var(--gold), var(--copper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .about p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+    
+    .profile {
+      border-radius: 14px;
+      padding: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .profile h3 {
+      margin-bottom: 16px;
+      color: var(--gold);
+      font-size: 19px;
+      font-weight: 700;
+    }
+    
+    .profile p {
+      font-size: 14px;
+      margin: 10px 0;
+    }
+    
+    .profile a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .profile a:hover {
+      border-bottom-color: var(--gold);
+      filter: brightness(1.2);
+    }
+
+    /* MODAL */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    #modal-content {
+      background: linear-gradient(135deg, rgba(15,15,15,0.98), rgba(8,8,8,0.98));
+      color: #fff;
+      padding: 32px;
+      border-radius: 16px;
+      max-width: 900px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+      border: 1px solid rgba(200, 154, 61, 0.4);
+      margin: auto;
+    }
+    
+    .modal-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    #modal-content h2 {
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, var(--gold), var(--copper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 24px;
+      padding-right: 40px;
+      line-height: 1.3;
+    }
+    
+    #modal-poetic {
+      margin-top: 12px;
+      color: #D1D5DB;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 20px;
+      font-size: 14px;
+      white-space: pre-wrap;
+      padding: 16px;
+      background: rgba(200, 154, 61, 0.05);
+      border-radius: 8px;
+      border-left: 3px solid var(--gold);
+    }
+    
+    /* Imagen del universo en el modal */
+    .modal-uni-img-container {
+      width: 100%;
+      height: 320px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.3));
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: universeFloat 10s ease-in-out infinite, universeGlow 5s ease-in-out infinite alternate;
+      box-shadow: 0 0 20px rgba(200, 154, 61, 0.4), 0 0 40px rgba(200, 154, 61, 0.2);
+    }
+    
+    .modal-uni-img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      border-radius: 8px;
+      position: relative;
+      z-index: 2;
+      animation: universeRotate 20s linear infinite, universeTransform 8s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(200, 154, 61, 0.6)) brightness(1.1);
+    }
+    
+    .modal-uni-img-container::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
+      background: radial-gradient(circle, rgba(200, 154, 61, 0.3) 0%, transparent 70%);
+      border-radius: 20px;
+      z-index: 1;
+      animation: universeAuraPulse 4s ease-in-out infinite;
+    }
+
+    /* Imagen del guardián en el modal */
+    .modal-guard-img-container {
+      width: 100%;
+      height: 320px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.3));
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: guardianFloat 8s ease-in-out infinite, guardianGlow 4s ease-in-out infinite alternate;
+      box-shadow: 0 0 20px rgba(200, 154, 61, 0.4), 0 0 40px rgba(200, 154, 61, 0.2);
+    }
+    
+    .modal-guard-img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      border-radius: 8px;
+      position: relative;
+      z-index: 2;
+      animation: guardianRotate 15s linear infinite, guardianTransform 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(200, 154, 61, 0.6)) brightness(1.1);
+    }
+    
+    .modal-guard-img-container::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
+      background: radial-gradient(circle, rgba(200, 154, 61, 0.3) 0%, transparent 70%);
+      border-radius: 20px;
+      z-index: 1;
+      animation: auraPulse 3s ease-in-out infinite;
+    }
+
+    .sources {
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .sources strong {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .sources > div {
+      margin-bottom: 16px;
+      padding: 12px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      border-left: 2px solid rgba(200, 154, 61, 0.3);
+    }
+
+    .sources a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .sources a:hover {
+      border-bottom-color: var(--gold);
+    }
+
+    #modal-links {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 16px;
+    }
+
+    #modal-links strong {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #modal-links a {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+      padding: 8px;
+      border-radius: 6px;
+      background: rgba(200, 154, 61, 0.05);
+      border: 1px solid rgba(200, 154, 61, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    #modal-links a:hover {
+      background: rgba(200, 154, 61, 0.1);
+      border-color: var(--gold);
+    }
+    
+    .modal-social-link {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 10px 18px;
+      background: transparent;
+      border: 2px solid rgba(200, 154, 61, 0.5);
+      border-radius: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      text-align: center;
+    }
+    
+    .modal-social-link:hover {
+      background: rgba(200, 154, 61, 0.1);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 32px;
+      cursor: pointer;
+      color: #9CA3AF;
+      transition: all 0.3s ease;
+      line-height: 1;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .close:hover {
+      color: var(--gold);
+      background: rgba(200, 154, 61, 0.1);
+      transform: rotate(90deg);
+    }
+
+    footer {
+      padding: 28px 20px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+      font-size: 13px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.3));
+    }
+
+    footer > div {
+      margin-bottom: 10px;
+    }
+
+    /* RESPONSIVE TABLET */
+    @media (min-width: 600px) {
+      .brand-text .subtitle {
+        display: block;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero .lead {
+        font-size: 18px;
+      }
+
+      .universes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .guards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .uni-card {
+        padding: 24px;
+      }
+    }
+
+    /* RESPONSIVE DESKTOP */
+    @media (min-width: 1024px) {
+      header {
+        padding: 18px 40px;
+      }
+
+      .hero {
+        flex-direction: row;
+        text-align: left;
+        padding: 60px 40px;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .hero .lead {
+        font-size: 19px;
+      }
+
+      .hero .lead,
+      .hero .meta {
+        text-align: left;
+      }
+
+      .cta {
+        justify-content: flex-start;
+      }
+
+      .visual-card {
+        max-width: 440px;
+      }
+
+      .adinkra-container {
+        max-width: 340px;
+      }
+
+      .project-section {
+        padding: 60px 40px;
+      }
+
+      .project-section h2 {
+        font-size: 38px;
+      }
+
+      .universes-section,
+      .guardians,
+      .about {
+        padding: 60px 40px;
+      }
+
+      .section-header h2 {
+        font-size: 34px;
+      }
+
+      .universes {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .guards-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+
+      .guard-img-container {
+        height: 280px;
+      }
+
+      .about {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .bio {
+        flex: 1;
+      }
+
+      .profile {
+        min-width: 320px;
+      }
+
+      .modal-grid {
+        flex-direction: row;
+      }
+
+      .modal-grid > div:first-child {
+        flex: 1;
+      }
+
+      .modal-grid > aside {
+        width: 360px;
+      }
+
+      .modal-uni-img-container,
+      .modal-guard-img-container {
+        height: 380px;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 36px 40px;
+        text-align: left;
+      }
+
+      footer > div {
+        margin-bottom: 0;
+      }
+
+    }
+    .voices-section {
+    padding: 60px 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.4));
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .voices-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+  }
+  .voice-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border-radius: 14px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s ease;
+  }
+  .voice-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+    border-color: rgba(200,154,61,0.3);
+  }
+  .voice-card h3 {
+    color: var(--gold);
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+  .voice-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .voice-card a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+  @media (min-width: 768px) {
+    .voices-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .voices-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="logo">NKF</div>
+      <div class="brand-text">
+        <div class="title">NKAFA</div>
+        <div class="subtitle">Guardianes de la conexión y la raíz</div>
+      </div>
+    </div>
+    <nav>
+      <a onclick="scrollToSection('inicio')">Inicio</a>
+      <a onclick="scrollToSection('proyecto')">Proyecto</a>
+      <a onclick="scrollToSection('universos')">Universos</a>
+      <a onclick="scrollToSection('guardianes')">Guardianes</a>
+      <a onclick="scrollToSection('voces')">Voces</a>
+      <a onclick="scrollToSection('quien')">Quién soy</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="copy">
+        <h1>Nkafa — Guardianes de la memoria</h1>
+        <p class="lead">Nkafa está asociado con la memoria, la raíz y la conexión con los ancestros.</p>
+        <p class="meta">
+          Recordar lo que representamos" es una exploración de la conexión profunda entre la herencia afro y su proyección en los medios digitales, indagando cómo las personas afro imaginan y desean verse representadas en los entornos virtuales contemporáneos.
+        </p>
+        <div class="cta">
+          <button class="btn" onclick="scrollToSection('universos')">Entrar al Multiverso</button>
+          <button class="btn secondary" onclick="scrollToSection('guardianes')">Conoce a los Guardianes</button>
+        </div>
+      </div>
+      <div class="visual-card">
+        <div class="adinkra-container">
+          <img src="https://www.adinkrasymbols.org/adinkra/sankofa-medium.png" alt="Sankofa">
+        </div>
+        <p style="margin-top:1.2rem; color:#f5f0e1; text-align:center; font-weight:600; letter-spacing:0.5px; font-size:13px;">
+          Símbolo Adinkra <strong style="color:var(--gold)">Sankofa</strong> — Volver y tomar lo que quedó atrás
+        </p>
+      </div>
+    </section>
+
+    <!-- DIVIDER 1 -->
+    <div class="section-divider">
+      <div class="divider-symbol">✦</div>
+    </div>
+
+    <!-- PROYECTO -->
+    <section id="proyecto" class="project-section">
+      <div class="section-header">
+        <h2>El Proyecto</h2>
+        <p class="poetic">
+          Este no es un portal de ficción.<br>
+          Es una memoria digital viva.<br>
+          Cada universo vibra con la voz de los ancestros,<br>
+          y cada visitante se convierte en guardián de la raíz.
+        </p>
+        <p class="representation">
+         Hoy, representarnos desde nosotrxs mismxs es un acto de resistencia.
+Porque no queremos ser vistos, queremos ser reconocidos: como sujetos de pensamiento, creadores, programadores, artistas, líderes y soñadores.
+        </p>
+      </div>
+    </section>
+
+    <!-- DIVIDER 2 -->
+    <div class="section-divider">
+      <div class="divider-symbol">◈</div>
+    </div>
+
+    <!-- UNIVERSOS -->
+    <section id="universos" class="universes-section">
+      <div class="section-header">
+        <h2>Universos de NKAFA — Narrativa + Historias Reales</h2>
+        <p class="meta">Haz clic en un universo para leer su historia poética y ver casos reales, artículos y recursos para profundizar.</p>
+      </div>
+      <div class="universes" id="universesGrid"></div>
+    </section>
+
+    <!-- DIVIDER 3 -->
+    <div class="section-divider">
+      <div class="divider-symbol">✧</div>
+    </div>
+
+    <!-- GUARDIANES -->
+    <section id="guardianes" class="guardians">
+      <div class="section-header">
+        <h2>Los Guardianes de la Raíz — Avatares y Biografías</h2>
+        <p class="meta">Interactúa con cada guardián para conocer su historia en el universo y en la vida real.</p>
+      </div>
+      <div class="guards-grid" id="guardiansContainer"></div>
+    </section>
+
+    <!-- DIVIDER 4 -->
+    <div class="section-divider">
+      <div class="divider-symbol">❖</div>
+    </div>
+    <!-- VOCES -->
+    <section id="voces" class="voices-section">
+      <div class="section-header">
+       <h2> Voces Representadoras </h2>
+        <p class="meta">Líderes, artistas, pensadoras y creadoras que han hecho visible la voz y la dignidad afrodescendiente en el mundo.</p>
+     </div>
+     <div class="voices-grid" id="voicesGrid"></div>
+   </section>
+
+    <!-- DIVIDER 5 -->
+    
+    <div class="section-divider">
+      <div class="divider-symbol">❖</div>
+    </div>
+  
+    
+
+    <!-- QUIEN SOY -->
+    <section id="quien" class="about">
+      <div class="bio">
+        <h2>Quién soy</h2>
+        <p>Soy una joven afrodescendiente apasionada por el afrofeminismo y la tecnología, que busca mostrarle al mundo cómo las personas negras queremos vernos representadas: desde nuestra fuerza, nuestra creatividad y nuestro conocimiento. Soy la creadora del portal <strong>NKAFA</strong> — una artista-investigadora que trabaja en la intersección entre arte, memoria y programación. Mi propósito es reconstruir narrativas afro, crear un archivo vivo donde nuestra comunidad recupere su voz y reescriba su historia desde la dignidad y el amor propio.</p>
+        <p>Si deseas colaborar, compartir historias o ser parte del archivo vivo, contáctame.</p>
+      </div>
+      <aside class="profile">
+        <h3>Contacto</h3>
+        <p>Correo: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alexandraandradehg@gmail.com" target="_blank" rel="noopener">alexandraandradehg@gmail.com</a></p>
+        <p>Redes: <a href="https://www.instagram.com/alegz229?igsh=dmMzazBybWhna2oz" target="_blank" rel="noopener">@alegz229</a></p>
+        <p>Ubicación: Colombia</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2025 Sankofa 3000 — Guardianes de la Raíz</div>
+    <div>Inspirado en afrofuturismo,historia y raíces </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="modal" role="dialog" aria-hidden="true">
+    <div id="modal-content" role="document">
+      <span class="close" onclick="closeModal()" aria-label="Cerrar">&times;</span>
+      <div class="modal-grid">
+        <div>
+          <h2 id="modal-title"></h2>
+          <div id="modal-poetic"></div>
+          <div class="sources" id="modal-sources"></div>
+        </div>
+        <aside>
+          <!-- Contenedor para imagen del universo -->
+          <div class="modal-uni-img-container" id="modal-uni-img-container" style="display:none;">
+            <img id="modal-uni-img" class="modal-uni-img" src="" alt="Universo">
+          </div>
+          <!-- Contenedor para imagen del guardián -->
+          <div class="modal-guard-img-container" id="modal-guard-img-container" style="display:none;">
+            <img id="modal-guard-img" class="modal-guard-img" src="" alt="Guardián">
+          </div>
+          <div id="modal-links"></div>
+          <!-- Enlace de red social del guardián en el modal -->
+          <a id="modal-social-link" class="modal-social-link" href="#" target="_blank" rel="noopener" style="display:none;">Seguir en Instagram</a>
+        </aside>
+      </div>
+      <div style="margin-top:20px; text-align:right">
+        <button class="btn" onclick="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+const universos = [
+  {
+    id: "sankofa3000",
+    titulo: "SANKOFA 3000 — Reconstruir historias y sembrar nuevas narrativas",
+    short: "El espacio donde la memoria se vuelve herramienta para el futuro.",
+    imagen: "imgnkafa/sankofa.png", 
+    poetic: `Sankofa 3000 representa la idea de volver a nuestras raíces para construir un futuro distinto.
+La palabra Sankofa, del pueblo Akan de Ghana, significa "regresar y tomar lo que se ha perdido". 
+Este universo recuerda que el conocimiento africano no desapareció, fue desplazado, y que volver a él es un acto de reconstrucción colectiva.
+
+Durante siglos, los aportes de las personas negras fueron ocultados: inventores, científicos, filósofos, artistas e intelectuales africanos fueron excluidos de la historia oficial. 
+Sankofa 3000 propone reescribir ese relato, reconociendo a quienes resistieron el colonialismo y crearon conocimiento en medio de la opresión.
+
+Desde los quilombos y palenques hasta los movimientos de derechos civiles, la historia afrodescendiente ha sido una historia de resiliencia y reconstrucción. 
+En este universo, la memoria es herramienta: mirar atrás no es nostalgia, es estrategia. 
+El futuro se construye con raíces firmes.`,
+    realCases: [
+      {
+        name: "Angela Davis — Biografía y activismo",
+        desc: "Filósofa y activista afroamericana, símbolo de la lucha contra el racismo y el sistema carcelario.",
+        url: "https://www.britannica.com/biography/Angela-Davis"
+      },
+      {
+        name: "Malcolm X — Biografía y legado",
+        desc: "Líder que impulsó el orgullo negro y la autodeterminación afrodescendiente en Estados Unidos.",
+        url: "https://www.britannica.com/biography/Malcolm-X"
+      },
+      {
+        name: "George Floyd — Impacto global",
+        desc: "Su asesinato en 2020 visibilizó la violencia racial y generó un movimiento global por la justicia.",
+        url: "https://time.com/5847667/story-behind-george-floyd-time-cover/"
+      }
+    ]
+  },
+  {
+    id: "ubuntu",
+    titulo: "UBUNTU NETWORK — Lideresas afro, redes tejidas por conciencia",
+    short: "Una red espiritual donde las mujeres afro se conectan sin jerarquías.",
+    imagen: "imgnkafa/ubuntu.png", // Agregar ruta de imagen
+    poetic: `Ubuntu Network evoca la filosofía africana del "soy porque somos".
+Este universo habla de las redes de mujeres negras que, a lo largo de la historia, han sostenido comunidades, luchas y movimientos. 
+Desde las madres de los barrios populares hasta las lideresas rurales, la organización colectiva ha sido clave para la supervivencia afrodescendiente.
+
+En muchos países de África y América Latina, las mujeres negras fueron las primeras en formar grupos comunitarios, redes de economía solidaria y movimientos ambientales o de derechos humanos. 
+El espíritu de Ubuntu se refleja en ellas: cada acción personal tiene sentido solo si beneficia a la comunidad.
+
+Ubuntu Network recuerda que la verdadera transformación nace de la cooperación, no de la competencia. 
+La fuerza de las mujeres negras está en su capacidad de sanar, unir y liderar desde la empatía.`,
+    realCases: [
+      {
+        name: "Wangari Maathai — Green Belt Movement",
+        desc: "Fundadora del Green Belt Movement; vinculó ecología, comunidad y empoderamiento femenino (Premio Nobel de la Paz 2004).",
+        url: "https://unesdoc.unesco.org/ark:/48223/pf0000230122.locale=en"
+      },
+      {
+        name: "Paula Moreno — Red Manos visibles",
+        desc: "fundó la organización Manos Visibles, una plataforma de liderazgo colectivo que impulsa el talento afrodescendiente, indígena y de comunidades populares.",
+        url: "https://manosvisibles.org/acerca-de-manos-visibles/"
+      },
+      {
+        name: "Leymah Gbowee — Movimiento de mujeres por la paz",
+        desc: "Organizó un movimiento de mujeres que contribuyó al fin de la guerra civil en Liberia (Premio Nobel de la Paz 2011).",
+        url: "https://www.nobelprize.org/prizes/peace/2011/gbowee/summary/"
+      }
+    ]
+  },
+  {
+    id: "nia",
+    titulo: "NIA QUANTUM — Tierra, conocimiento, ritmo y propósito",
+    short: "La vibración que conecta cuerpo, espíritu y conocimiento.",
+    imagen: "imgnkafa/nia.png", 
+    poetic: `Nia Quantum representa la fuerza del ritmo y la palabra como herramientas de resistencia.
+Desde los tambores africanos hasta el hip hop contemporáneo, la música negra ha sido vehículo de memoria, espiritualidad y denuncia.
+
+En los tiempos de la esclavitud, los cantos y tambores fueron formas de comunicación prohibidas pero imposibles de eliminar. 
+En el Caribe, en Brasil, en Colombia, los sonidos afrodescendientes dieron origen a géneros que aún hoy mantienen viva la historia de la diáspora.
+
+El ritmo une generaciones. La música ha sido voz para quienes no podían hablar en los libros ni en las leyes. 
+Nia Quantum es ese pulso que conecta los rituales ancestrales con la juventud actual: una vibración que enseña, educa y libera.`,
+    realCases: [
+      {
+        name: "Nina Simone — Música y activismo",
+        desc: "Cantante y activista afroamericana; su obra dio voz al dolor y al orgullo del pueblo negro.",
+        url: "https://www.theguardian.com/music/2015/jun/22/nina-simone-documentary-what-happened-miss-simone"
+      },
+      {
+        name: "Peter beat y los reyes de la chirimia",
+        desc: "Grupo músical con ritmo tradicional del pacífico colombiano.",
+        url: "https://www.instagram.com/losreyesdelachirimia?utm_source=ig_web_button_share_sheet&igsh=bThxcGl2aG15MjZi"
+      },
+      {
+        name: "Goyo - La pantera",
+        desc: "Goyo representa el espíritu del Pacífico colombiano: una región rica en cultura, tradición oral, danza y ritmo, pero históricamente marginada.",
+        url: "https://es.laphil.com/musicdb/artists/9238/goyo"
+      },
+      {
+        name: "Fela Kuti — Afrobeat y política",
+        desc: "Músico nigeriano que usó la música como protesta contra la corrupción y la represión.",
+        url: "https://www.theguardian.com/music/2024/apr/10/life-with-fela-kuti-dangerous-tour-roy-ayers-nigeria"
+      }
+    ]
+  },
+  {
+    id: "ori",
+    titulo: "ORI — El poder que no se impone, se irradia",
+    short: "El arte visual afro como herramienta de transformación social.",
+    imagen: "imgnkafa/ori.png",
+    poetic: `El universo Ori aborda la importancia del arte afrodescendiente como espacio de identidad y resistencia.
+Durante siglos, las expresiones artísticas africanas fueron clasificadas como "artesanías" o "folclore", mientras el arte europeo ocupaba los museos. 
+Sin embargo, el arte negro siempre fue lenguaje político, espiritual y colectivo.
+
+Desde los murales comunitarios hasta la fotografía, la moda o la escultura, las y los artistas afro han reconfigurado la idea de belleza. 
+Han demostrado que crear también es un acto de memoria y liberación.
+
+Ori significa "cabeza" o "conciencia" en yoruba, y simboliza la claridad interior. 
+Este universo celebra el arte que devuelve dignidad, que redefine lo bello y que afirma lo negro como un centro estético universal.`,
+    realCases: [
+      {
+        name: "Bethann Hardison — Diversidad en la moda",
+        desc: "Modelo y activista que promovió la inclusión racial en la industria de la moda.",
+        url: "https://apnews.com/article/ccb4e9c72eb908cfa1af8299a5532704"
+      },
+      {
+        name: "Kwame Brathwaite — Black Is Beautiful",
+        desc: "Fotógrafo que revolucionó la representación visual de las personas negras en los años 60.",
+        url: "https://www.vogue.com/article/kwame-brathwaite-black-is-beautiful-photography-museum-of-the-city-of-new-york"
+      }
+    ]
+  },
+  {
+    id: "aye",
+    titulo: "AYÉ — Conectar con lo ancestral a través del cabello",
+    short: "El cabello como símbolo de educación, poder y herencia.",
+    imagen: "imgnkafa/aye.png", 
+    poetic: `Ayé —palabra yoruba que significa "vida"— representa el vínculo entre cuerpo, cultura y espiritualidad. 
+El cabello afro ha sido un símbolo central en la identidad negra: ha pasado de ser motivo de discriminación a emblema de orgullo y resistencia.
+
+En África precolonial, los peinados comunicaban información sobre el origen, el estatus social o el linaje. 
+Durante la esclavitud, las trenzas sirvieron incluso como mapas para planear fugas. 
+Con el tiempo, el cabello se transformó en una forma de expresión política y cultural.
+
+El movimiento "Black is Beautiful" y las luchas recientes contra la discriminación capilar reivindican el derecho a llevar el cabello natural sin castigos ni juicios. 
+Ayé simboliza ese proceso: reconocer que el cuidado del cabello no es solo estética, sino una afirmación de historia y dignidad.`,
+    realCases: [
+      {
+        name: "Madam C. J. Walker — Emprendimiento y educación",
+        desc: "Primera mujer afroamericana millonaria; promovió la autonomía económica a través del cuidado capilar.",
+        url: "https://www.britannica.com/money/Madam-C-J-Walker"
+      },
+      {
+        name: "Robe L Ninho — Cuidado capilar afro y música",
+        desc: "A través de la música y el estilismo, Robe promueve el conocimiento y respeto por la historia de sus raíces, utilizando tanto la actividad musical como el trabajo del pelo como herramienta para promover lo que él denomina descolonización mental.",
+        url: "https://www.senalcolombia.tv/cultura/quien-es-robe-l-ninho-historia-afro"
+      },
+      {
+        name: "CROWN Act — Legislación contra la discriminación",
+        desc: "Ley que busca proteger a las personas negras de la discriminación por su tipo de cabello.",
+        url: "https://www.naacpldf.org/crown-act/"
+      }
+    ]
+  }
+];
+
+const guardianes = [
+  {
+    nombre: "AntiRra",
+    universo: "SANKOFA 3000",
+    desc: "Transformo la herida en saber, el trauma en fuego y la verdad en libertad.",
+    rol: "Modelo y activista antirracista",
+    elemento: "Conocimiento",
+    imagen: "imgnkafa/jair.png",
+    url: "https://www.instagram.com/jairboundless?utm_source=ig_web_button_share_sheet&igsh=MXB6aDdpZ2V5NzBrYQ=="
+  },
+  {
+    nombre: "Aris",
+    universo: "SANKOFA 3000",
+    desc: "Facilita procesos de comunidad donde las narrativas afro se transforman en programas educativos.",
+    rol: "Gestora de contenidos y educación",
+    elemento: "Palabra",
+    imagen: "imgnkafa/aris.png",
+    url: "https://www.instagram.com/narrativasprietas?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  },
+  {
+    nombre: "Orí N'Zinga",
+    universo: "UBUNTU NETWORK",
+    desc: "Lidera iniciativas de fortalecimiento de liderazgo femenino afro.",
+    rol: "Líder comunitaria y formadora",
+    elemento: "Territorio",
+    imagen: "imgnkafa/ori.jpg",
+    url: "https://www.instagram.com/lauraaceleny?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  },
+  {
+    nombre: "Kumbuka",
+    universo: "UBUNTU NETWORK",
+    desc: "Trabaja en la preservación y curaduría digital de archivos orales y genealogías.",
+    rol: "Archivista digital",
+    elemento: "Memoria",
+    imagen: "imgnkafa/hila.png",
+    url: "https://www.instagram.com/alegz229/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  },
+  {
+    nombre: "zulú",
+    universo: "NIA QUANTUM",
+    desc: "Promueve el ciudado como manera de resistencia y autoconocimiento a través de la estética ",
+    rol: "Belleza como práctica de cuidado",
+    elemento: "Duafe",
+    imagen: "imgnkafa/nunu.png",
+    url: "https://www.instagram.com/audrey__vm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  },
+  {
+    nombre: "Peter",
+    universo: "NIA QUANTUM",
+    desc: "Articula proyectos de economía cultural a partir del sonido: festivales y colectivos.",
+    rol: "Gestor cultural",
+    elemento: "Pulso comunitario",
+    imagen: "imgnkafa/peter.png",
+    url: "https://www.instagram.com/losreyesdelachirimia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  },
+  {
+    nombre: "Marvin",
+    universo: "NIA QUANTUM",
+    desc: "Diseña residencias creativas y laboratorios donde jóvenes afro exploran tecnologías sonoras.",
+    rol: "Curador y facilitador creativo",
+    elemento: "Creatividad",
+    imagen: "imgnkafa/marg.png",
+    url: "https://www.youtube.com/@peterbeatylosreyesdelachirimia"
+  },
+  {
+    nombre: "Dulce",
+    universo: "ORI",
+    desc: "Impulsa proyectos de resistencia juvenil afro a traves del liderazgo ",
+    rol: "líder social",
+    elemento: "Voz",
+    imagen: "imgnkafa/dulce.png",
+    url: "https://www.elcolombiano.com/medellin/naidi-girls-ninas-afro-robotica-ciencia-ia-CI28574226"
+  },
+  {
+    nombre: "Prais",
+    universo: "ORI",
+    desc: "Coordina talleres de moda comunitaria que conectan saberes textiles ancestrales.",
+    rol: "Formadora en textiles y moda",
+    elemento: "Tejido",
+    imagen: "imgnkafa/prais.png",
+    url: "https://www.instagram.com/__prais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  },
+  {
+    nombre: "Z$ller",
+    universo: "ORI",
+    desc: "Documenta y difunde prácticas estéticas afro a través de fotografía y medios digitales.",
+    rol: "Fotógrafo y comunicador visual",
+    elemento: "Imagen",
+    imagen: "imgnkafa/miller.png",
+    url: "https://www.instagram.com/millxrz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  },
+  {
+    nombre: "Kwame",
+    universo: "AYÉ",
+    desc: "Promueve la resistencia a tráves del arte fotográfico .",
+    rol: "Promueve el arte fotográfico",
+    elemento: "Lente",
+    imagen: "imgnkafa/samir.png",
+    url: "https://www.instagram.com/samir_vanegas_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  },
+  {
+    nombre: "Flako",
+    universo: "AYÉ",
+    desc: "Explora la relación entre sonido y praxis del cuidado: crea piezas sonoras y documentales.",
+    rol: "Documentalista sonoro",
+    elemento: "Frecuencia",
+    imagen: "imgnkafa/flako.png",
+    url: "https://www.instagram.com/theprettyflako?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  },
+  {
+    nombre: "Zilene",
+    universo: "AYÉ",
+    desc: "Facilita programas intergeneracionales donde madres y niñas recuperan técnicas tradicionales de peinado.",
+    rol: "Facilitadora comunitaria",
+    elemento: "Raíz",
+    imagen: "imgnkafa/zilene.png",
+    url: "https://www.instagram.com/angie_zilene?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  }
+];
+
+
+const voces = [
+  { nombre: "Angela Davis", desc: "Filósofa, escritora y activista afroamericana; símbolo global de la lucha por los derechos civiles y la liberación negra.", link: "https://www.britannica.com/biography/Angela-Davis" },
+  { nombre: "Goyo", desc: "Cantante del grupo ChocQuibTown; su voz y estética han resignificado la representación afro en la música latina.", link: "https://es.laphil.com/musicdb/artists/9238/goyo" },
+  { nombre: "Paula Moreno", desc: "Exministra colombiana y fundadora de Manos Visibles; impulsa liderazgo afro e innovación social en América Latina.", link: "https://manosvisibles.org/acerca-de-manos-visibles/" },
+  { nombre: "Leymah Gbowee", desc: "Lideresa liberiana que organizó el movimiento de mujeres por la paz; Premio Nobel de la Paz 2011.", link: "https://www.nobelprize.org/prizes/peace/2011/gbowee/summary/" },
+  { nombre: "Wangari Maathai", desc: "Primera mujer africana en recibir el Nobel de la Paz, por su lucha ambiental y social en Kenia.", link: "https://www.nobelprize.org/prizes/peace/2004/maathai/facts/" },
+  { nombre: "Nina Simone", desc: "Pianista y activista; su música fue un grito de libertad y orgullo afroamericano.", link: "https://www.theguardian.com/music/2015/jun/22/nina-simone-documentary-what-happened-miss-simone" },
+  { nombre: "Bethann Hardison", desc: "Modelo y activista que revolucionó la diversidad en la moda global.", link: "https://apnews.com/article/ccb4e9c72eb908cfa1af8299a5532704" },
+  { nombre: "Fela Kuti", desc: "Músico nigeriano creador del afrobeat; usó su arte como arma política contra la opresión.", link: "https://www.theguardian.com/music/2024/apr/10/life-with-fela-kuti-dangerous-tour-roy-ayers-nigeria" },
+  { nombre: "Miriam Makeba", desc: "Cantante sudafricana conocida como 'Mama Africa'; embajadora de la paz y los derechos humanos.", link: "https://www.britannica.com/biography/Miriam-Makeba" },
+  { nombre: "Marielle Franco", desc: "Socióloga y activista afrobrasileña asesinada por denunciar la violencia policial y el racismo estructural.", link: "https://www.bbc.com/mundo/noticias-america-latina-43449716" },
+  { nombre: "Sojourner Truth", desc: "Abolicionista afroestadounidense y feminista, autora del discurso 'Ain't I a Woman?'", link: "https://www.womenshistory.org/education-resources/biographies/sojourner-truth" },
+  { nombre: "James Baldwin", desc: "Escritor y ensayista estadounidense que denunció el racismo y exploró la identidad negra y queer.", link: "https://www.britannica.com/biography/James-Baldwin" },
+  { nombre: "Malcolm X", desc: "Líder afroamericano que promovió el orgullo negro, la autodeterminación y la resistencia frente al racismo.", link: "https://www.britannica.com/biography/Malcolm-X" },
+  { nombre: "Chimamanda Ngozi Adichie", desc: "Escritora nigeriana feminista; su obra reivindica la voz de las mujeres africanas contemporáneas.", link: "https://www.chimamanda.com/" },
+  { nombre: "Tessa Thompson", desc: "Actriz afro-latina que ha impulsado la representación negra en el cine de Hollywood.", link: "https://www.imdb.com/name/nm1935086/" },
+  { nombre: "Kwame Brathwaite", desc: "Fotógrafo creador del lema 'Black is Beautiful'; documentó la estética y orgullo afro en los años 60.", link: "https://www.vogue.com/article/kwame-brathwaite-black-is-beautiful-photography-museum-of-the-city-of-new-york" },
+  { nombre: "Maya Angelou", desc: "Poeta, escritora y activista estadounidense; su obra celebra la resistencia y la dignidad afro.", link: "https://www.britannica.com/biography/Maya-Angelou" },
+  { nombre: "Patricia Hill Collins", desc: "Socióloga estadounidense; formuló la teoría del pensamiento feminista negro.", link: "https://sociology.umd.edu/facultyprofile/collins/patricia-hill" },
+  { nombre: "Robe L Ninho", desc: "Artista afrocolombiano que une música y estética capilar para hablar de descolonización mental.", link: "https://www.senalcolombia.tv/cultura/quien-es-robe-l-ninho-historia-afro" },
+  { nombre: "Zanele Muholi", desc: "Fotógrafe sudafricane que documenta las vidas y resistencias de personas negras LGBTQ+.", link: "https://www.tate.org.uk/art/artists/zanele-muholi-17101" },
+  { nombre: "Nelson Mandela", desc: "Líder sudafricano y símbolo mundial de la lucha contra el apartheid y por la reconciliación nacional.", link: "https://www.britannica.com/biography/Nelson-Mandela" },
+  { nombre: "Martin Luther King Jr.", desc: "Pastor y activista estadounidense; líder del movimiento por los derechos civiles con su mensaje de justicia e igualdad.", link: "https://www.britannica.com/biography/Martin-Luther-King-Jr" },
+  { nombre: "Marcus Garvey", desc: "Político y pensador jamaicano; fundador del movimiento panafricanista y defensor del orgullo negro.", link: "https://www.britannica.com/biography/Marcus-Garvey" },
+  { nombre: "Desmond Tutu", desc: "Arzobispo sudafricano y activista por los derechos humanos, ganador del Premio Nobel de la Paz 1984.", link: "https://www.nobelprize.org/prizes/peace/1984/tutu/biographical/" },
+  { nombre: "Bob Marley", desc: "Músico jamaicano y símbolo de resistencia; su mensaje unió espiritualidad, identidad afro y justicia social.", link: "https://www.britannica.com/biography/Bob-Marley" }
+];
+
+
+const voicesGrid = document.getElementById("voicesGrid");
+voces.forEach(v => {
+  const card = document.createElement("div");
+  card.className = "voice-card";
+  card.innerHTML = `<h3><a href="${v.link}" target="_blank" rel="noopener">${v.nombre}</a></h3><p>${v.desc}</p>`;
+  voicesGrid.appendChild(card);
+});
+
+// Renderizar universos CON IMÁGENES
+const grid = document.getElementById('universesGrid');
+universos.forEach(function(u) {
+  const card = document.createElement('div');
+  card.className = 'uni-card';
+  card.innerHTML = `
+    <div class="uni-img-container">
+      <img src="${u.imagen}" alt="${u.titulo}" class="uni-img">
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px">
+      <div class="uni-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Sankofa_bird_symbol.png" alt="">
+      </div>
+      <div style="flex:1">
+        <div class="uni-title">${u.titulo}</div>
+        <div class="uni-desc">${u.short}</div>
+      </div>
+    </div>
+    <div class="uni-meta">Click para abrir — Historias reales vinculadas</div>
+  `;
+  card.onclick = function() { openModal(u); };
+  grid.appendChild(card);
+});
+
+// Renderizar guardianes
+const gContainer = document.getElementById('guardiansContainer');
+guardianes.forEach(function(g) {
+  const card = document.createElement('div');
+  card.className = 'guard';
+  card.innerHTML = `
+    <div class="guard-img-container">
+      <img src="${g.imagen}" alt="${g.nombre}" class="guard-img">
+    </div>
+    <h3>${g.nombre}</h3>
+    <div class="mantra">"${g.desc}"</div>
+    <p class="guard-meta">
+      <strong>Rol:</strong> ${g.rol}<br>
+      <strong>Universo:</strong> ${g.universo}<br>
+      <strong>Elemento:</strong> ${g.elemento}
+    </p>
+    <div class="guard-buttons">
+      <button onclick="openGuardianModal('${escapeQuotes(g.nombre)}', '${g.imagen}', '${escapeQuotes(g.desc)}', '${g.rol}', '${g.universo}', '${g.elemento}', '${g.url}')">Ver historia</button>
+      ${g.url ? `<a href="${g.url}" class="social-link" target="_blank" rel="noopener">Seguir</a>` : ''}
+    </div>
+  `;
+  gContainer.appendChild(card);
+});
+
+function escapeQuotes(str) {
+  return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+}
+
+function openModal(universo) {
+  document.getElementById('modal-title').innerText = universo.titulo;
+  document.getElementById('modal-poetic').innerText = universo.poetic;
+  
+  // Mostrar imagen del universo en el modal
+  const uniImgContainer = document.getElementById('modal-uni-img-container');
+  const uniImg = document.getElementById('modal-uni-img');
+  const guardImgContainer = document.getElementById('modal-guard-img-container');
+  const socialLink = document.getElementById('modal-social-link');
+  
+  uniImg.setAttribute('src', universo.imagen);
+  uniImg.setAttribute('alt', universo.titulo);
+  
+  // Mostrar contenedor de universo y ocultar contenedor de guardián
+  uniImgContainer.style.display = 'flex';
+  guardImgContainer.style.display = 'none';
+  socialLink.style.display = 'none';
+
+  const sourcesEl = document.getElementById('modal-sources');
+  sourcesEl.innerHTML = '<strong>Historias y activistas reales vinculados:</strong>';
+  universo.realCases.forEach(function(rc) {
+    const caseDiv = document.createElement('div');
+    caseDiv.innerHTML = '<strong style="color:var(--gold)">' + rc.name + '</strong><div style="color:#D1D5DB;font-size:13px;margin-top:4px">' + rc.desc + '</div>';
+    sourcesEl.appendChild(caseDiv);
+  });
+
+  const linksEl = document.getElementById('modal-links');
+  linksEl.innerHTML = '<strong>Lecturas recomendadas:</strong>';
+  universo.realCases.forEach(function(rc) {
+    const linkEl = document.createElement('a');
+    linkEl.href = rc.url;
+    linkEl.target = '_blank';
+    linkEl.rel = 'noopener noreferrer';
+    linkEl.textContent = rc.name;
+    linksEl.appendChild(linkEl);
+  });
+
+  document.getElementById('modal').style.display = 'flex';
+  document.getElementById('modal').setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function openGuardianModal(nombre, imagen, desc, rol, universo, elemento, url) {
+  document.getElementById('modal-title').innerText = nombre;
+  document.getElementById('modal-poetic').innerText = desc + '\n\nRol: ' + rol + '\nUniverso: ' + universo + '\nElemento: ' + elemento + '\n\nUn guardián que protege la memoria y guía el futuro con su presencia y sabiduría ancestral.';
+  
+  // Mostrar imagen del guardián en el modal
+  const uniImgContainer = document.getElementById('modal-uni-img-container');
+  const guardImgContainer = document.getElementById('modal-guard-img-container');
+  const guardImg = document.getElementById('modal-guard-img');
+  const socialLink = document.getElementById('modal-social-link');
+  
+  guardImg.setAttribute('src', imagen);
+  guardImg.setAttribute('alt', nombre);
+  
+  // Mostrar contenedor de guardián y ocultar contenedor de universo
+  guardImgContainer.style.display = 'flex';
+  uniImgContainer.style.display = 'none';
+  
+  // Mostrar enlace de red social si existe
+  if (url && url !== 'https://www.instagram.com') {
+    socialLink.href = url;
+    socialLink.style.display = 'inline-block';
+  } else {
+    socialLink.style.display = 'none';
+  }
+
+  document.getElementById('modal-sources').innerHTML = '';
+  document.getElementById('modal-links').innerHTML = '';
+
+  document.getElementById('modal').style.display = 'flex';
+  document.getElementById('modal').setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+  document.getElementById('modal').setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = 'auto';
+}
+
+function scrollToSection(id) {
+  const element = document.getElementById(id);
+  if (element) {
+    const headerOffset = 80;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// Event listeners
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target.id === 'modal') closeModal();
+});
+  </script>
+</body>
+</html>

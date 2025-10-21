@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animación 2D — Guardián Jair</title>
+<style>
+  body {
+    background-color: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .guardian-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .guardian {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  /* Movimiento sutil como respiración */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* Brillo rítmico */
+  @keyframes glow {
+    from { box-shadow: 0 0 20px rgba(255, 204, 0, 0.2); }
+    to { box-shadow: 0 0 60px rgba(255, 204, 0, 0.8); }
+  }
+
+  /* Parpadeo con opacidad (simulado) */
+  .guardian.blink {
+    animation: blink 0.2s ease-in-out;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  h1 {
+    color: #fff;
+    margin-top: 30px;
+    font-size: 1.4rem;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  h1 span {
+    color: #ffcc00;
+  }
+</style>
+</head>
+<body>
+
+  <div class="guardian-container">
+    <img src="imgnkafa/jair.png" alt="Guardián Jair" class="guardian" id="guardian">
+  </div>
+
+  <h1>Guardián <span>Jair</span> — Fuerza y memoria viva</h1>
+
+  <script>
+    // Efecto de parpadeo aleatorio
+    const guardian = document.getElementById('guardian');
+    setInterval(() => {
+      guardian.classList.add('blink');
+      setTimeout(() => guardian.classList.remove('blink'), 200);
+    }, Math.random() * 4000 + 2000);
+  </script>
+
+</body>
+</html>
